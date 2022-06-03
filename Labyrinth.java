@@ -29,18 +29,12 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class Labyrinth implements ActionListener {
-    private Room[][] rooms = new Room[4][4];
+    // private Room[][] rooms = new Room[4][4];
     private int currentPos;
 
     public Labyrinth() {
         // System.out.println("wasd");
-        for (int i = 0; i < rooms.length; i++) {
-            for (int j = 0; j < rooms[i].length; j++) {
-                rooms[i][j] = new Room(true, true, true, true, null, null, null, null);
-
-            }
-        }
-        Constants.timer = new Timer(2000, this);
+        Constants.timer = new Timer(100, this);
         Constants.timer.start();
 
     }
@@ -67,10 +61,15 @@ public class Labyrinth implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // System.out.println((Constants.currentRoomId / 3) - 1);
-        // System.out.println((Constants.currentRoomId % 3) - 1);
+        // System.out.println((Constants.currentRoomId / 4));
+        // System.out.println((Constants.currentRoomId % 4));
+        Constants.frame.remove(Constants.rooms[Constants.oldId / 4][Constants.oldId % 4]);
+        Constants.frame.add(Constants.rooms[Constants.currentRoomId / 4][Constants.currentRoomId % 4]);
+        Constants.frame.validate();
 
-        Constants.rooms[(Constants.currentRoomId / 3) - 1][(Constants.currentRoomId % 3) - 1]
+        Constants.rooms[Constants.currentRoomId / 4][Constants.currentRoomId % 4].repaint();
+
+        Constants.rooms[(Constants.currentRoomId / 4)][(Constants.currentRoomId % 4)]
                 .actionPerformed(new ActionEvent(e, currentPos, null));
 
     }

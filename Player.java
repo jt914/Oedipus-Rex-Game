@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class Player extends JPanel {
     private int x = 200;
-    private int y = 400;
+    private int y = 200;
 
     public void draw(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
@@ -22,16 +22,21 @@ public class Player extends JPanel {
 
     }
 
+    public void reset() {
+        x = 200;
+        y = 200;
+    }
+
     public void moveNorth() {
-        y -= 50;
-        if (y <= 30) {
-            y = 30;
+        y -= 30;
+        if (y <= 70) {
+            y = 70;
         }
         repaint();
     }
 
     public void moveEast() {
-        x += 50;
+        x += 30;
 
         if (x >= Constants.SW - 90) {
             x = Constants.SW - 90;
@@ -42,7 +47,7 @@ public class Player extends JPanel {
     }
 
     public void moveSouth() {
-        y += 50;
+        y += 30;
 
         if (y >= Constants.SH - 110) {
             y = Constants.SH - 110;
@@ -54,7 +59,7 @@ public class Player extends JPanel {
 
     public void moveWest() {
 
-        x -= 50;
+        x -= 30;
         if (x <= 30) {
             x = 30;
         }
