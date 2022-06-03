@@ -31,7 +31,7 @@ public class Main {
 
     public static boolean playGame(String text) {
         Constants.labyrinth = new Labyrinth();
-        System.out.println("working");
+        // System.out.println("working");
         // Constants.labyrinth.printMap();
         return false;
     }
@@ -70,11 +70,10 @@ public class Main {
         // }
 
         // main window is basically a panel, or part of the frame
-        Room room = new Room(true, false, true, true);
-        IDLabel topLabel = new IDLabel();
+        Room room = new Room(false, false, false, false, null, null, null, null);
         Constants.rooms[3][0] = room;
         // setting the locaiton and adding it onto the frame
-        room.setLocation(100, 100);
+        room.setLocation(100, 130);
         frame.add(room);
         // frame.add(topLabel);
         // topLabel.setMinWidth(50);

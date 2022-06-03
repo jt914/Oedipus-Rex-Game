@@ -33,15 +33,31 @@ public class Room extends JPanel implements ActionListener {
     private boolean northWall, eastWall, southWall, westWall;
     private static int roomCounter;
     private Timer timer;
+    private JLabel roomId;
+    private boolean atDoor;
+    String northText, eastText, southText, westText;
 
-    public Room(boolean northWall, boolean eastWall, boolean southWall, boolean westWall) {
+    public Room(boolean northWall, boolean eastWall, boolean southWall, boolean westWall, String northText,
+            String eastText, String southText, String westText) {
+        setLayout(new BorderLayout());
+
         this.northWall = northWall;
         this.eastWall = eastWall;
         this.southWall = southWall;
         this.westWall = westWall;
         id = roomCounter;
         roomCounter++;
-        timer = new Timer(1, this);
+        this.northText = northText;
+        this.eastText = eastText;
+        this.southText = southText;
+        this.westText = westText;
+        // timer = new Timer(1, this);
+
+        JPanel NORTH = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        roomId = new JLabel(Constants.currentDisplayRow + ", " + Constants.currentDisplayColumn, SwingConstants.LEFT);
+        roomId.setHorizontalAlignment(SwingConstants.LEFT);
+        NORTH.add(roomId);
+        this.add(NORTH, BorderLayout.NORTH);
 
     }
 
@@ -50,24 +66,80 @@ public class Room extends JPanel implements ActionListener {
         // JLabel label = new JLabel("My label");
         // label.setText("<html>This is a<br>multline label!<br> Try it
         // yourself!</html>");
+
         // this.add(label);
+        // System.out.println(Constants.player.getX() + ", " + Constants.player.getY());
 
-        if (Constants.player.getX() > 380 && Constants.player.getY() > 180 && Constants.player.getX() < 480
-                && Constants.player.getY() < 270) {
-            int result = JOptionPane.showConfirmDialog(this, "Test Text");
+        // MOVE NORTH
+        if (Constants.player.getX() > 160 && Constants.player.getY() > 0 && Constants.player.getX() < 260
+                && Constants.player.getY() < 50) {
 
-            // JDialog jd = new JDialog();
-            // jd.setLayout(new FlowLayout());
-            // jd.setBounds(0, 0, 50, 50);
-            // JLabel label = new JLabel("test");
-            // JButton button = new JButton("click");
-            // button.addActionListener(new ActionListener() {
-            // @Override
-            // public void actionPerformed(ActionEvent e) {
-            // System.out.println("worked");
-            // }
-            // });
+            int result = JOptionPane.showConfirmDialog(this, northText);
+            if (result != 1) {
+
+                Constants.timer.restart();
+                atDoor = true;
+
+            } else {
+
+            }
+
+            // MOVE EAST
+        } else if (Constants.player.getX() > 380 && Constants.player.getY() > 180 && Constants.player.getX() < 480
+                && Constants.player.getY() < 270 && atDoor == false) {
+            int result = JOptionPane.showConfirmDialog(this, eastText);
+            if (result != 1) {
+
+                Constants.timer.restart();
+                atDoor = true;
+
+            }
+
+            // MOVE SOUTH
+        } else if (Constants.player.getX() > 180 && Constants.player.getY() > 380 && Constants.player.getX() < 280
+                && Constants.player.getY() < 480) {
+            int result = JOptionPane.showConfirmDialog(this, southText);
+
+            if (result != 1) {
+
+                Constants.timer.restart();
+                atDoor = true;
+
+            }
         }
+
+        // MOVE WEST
+        else if (Constants.player.getX() > 0 && Constants.player.getY() > 200 && Constants.player.getX() < 50
+                && Constants.player.getY() < 280)
+
+        {
+
+            int result = JOptionPane.showConfirmDialog(this, westText);
+            if (result != 1) {
+
+                Constants.timer.restart();
+                atDoor = true;
+
+            }
+
+        }
+
+        else {
+            atDoor = false;
+        }
+
+        // JDialog jd = new JDialog();
+        // jd.setLayout(new FlowLayout());
+        // jd.setBounds(0, 0, 50, 50);
+        // JLabel label = new JLabel("test");
+        // JButton button = new JButton("click");
+        // button.addActionListener(new ActionListener() {
+        // @Override
+        // public void actionPerformed(ActionEvent e) {
+        // System.out.println("worked");
+        // }
+        // });
+
         repaint();
 
     }
@@ -92,26 +164,27 @@ public class Room extends JPanel implements ActionListener {
 
         if (northWall) {
             try {
-                g2d.drawImage(ImageIO.read(new File("resources\\northWall.png")), 0, 0, null);
+                g2d.drawImage(ImageIO.read(new File("resources\\northWall.png")), 0, 20, null);
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
         } else {
             try {
-                g2d.drawImage(cropImage(ImageIO.read(new File("resources\\northWall.png")), 0, 0, 201, 30), 0, 0, null);
+                g2d.drawImage(cropImage(ImageIO.read(new File("resources\\northWall.png")), 0, 0, 201, 30), 0, 20,
+                        null);
             } catch (IOException e) {
                 e.printStackTrace();
             }
             try {
-                g2d.drawImage(cropImage(ImageIO.read(new File("resources\\northWall.png")), 0, 0, 200, 30), 298, 0,
+                g2d.drawImage(cropImage(ImageIO.read(new File("resources\\northWall.png")), 0, 0, 200, 30), 298, 20,
                         null);
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
             try {
-                g2d.drawImage(ImageIO.read(new File("resources\\northDoor.png")), 199, 0, null);
+                g2d.drawImage(ImageIO.read(new File("resources\\northDoor.png")), 199, 20, null);
             } catch (IOException e) {
                 e.printStackTrace();
             }

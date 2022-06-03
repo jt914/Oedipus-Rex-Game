@@ -36,11 +36,11 @@ public class Labyrinth implements ActionListener {
         // System.out.println("wasd");
         for (int i = 0; i < rooms.length; i++) {
             for (int j = 0; j < rooms[i].length; j++) {
-                rooms[i][j] = new Room(true, true, true, true);
+                rooms[i][j] = new Room(true, true, true, true, null, null, null, null);
 
             }
         }
-        Constants.timer = new Timer(1, this);
+        Constants.timer = new Timer(2000, this);
         Constants.timer.start();
 
     }

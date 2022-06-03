@@ -10,5 +10,7 @@ public class Constants {
     public static int currentRoomId = 13;
     public static Room[][] rooms = new Room[4][4];
     public static Timer timer;
+    public static int currentDisplayRow;
+    public static int currentDisplayColumn;
 
 }
