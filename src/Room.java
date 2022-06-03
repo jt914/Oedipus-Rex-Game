@@ -30,6 +30,8 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+//todo make the reset smoother by makng it reset to where it would actually end up
+
 public class Room extends JPanel implements ActionListener {
     private int id;
     private boolean northWall, eastWall, southWall, westWall;
@@ -86,9 +88,9 @@ public class Room extends JPanel implements ActionListener {
             // System.out.println(Constants.player.getX() + ", " + Constants.player.getY());
 
             // MOVE NORTH
-            if (Constants.player.getX() > 320 && Constants.player.getY() > 120
-                    && Constants.player.getX() < 520
-                    && Constants.player.getY() < 180) {
+            if (Constants.player.getX() >= 340 && Constants.player.getY() >= 0
+                    && Constants.player.getX() <= 520
+                    && Constants.player.getY() <= 110) {
                 // System.out.println("working");
 
                 if (!northWall && !atDoor) {
@@ -108,6 +110,7 @@ public class Room extends JPanel implements ActionListener {
                         Constants.currentRoomId -= 4;
                         Constants.currentDisplayRow += 1;
                         Constants.player.reset();
+
                     } else if (result == JOptionPane.NO_OPTION) {
                         // Constants.timer.restart();
                         atDoor = true;
@@ -118,9 +121,9 @@ public class Room extends JPanel implements ActionListener {
                 return;
 
                 // MOVE EAST
-            } else if (Constants.player.getX() > 680 && Constants.player.getY() > 440
-                    && Constants.player.getX() < 960
-                    && Constants.player.getY() < 600) {
+            } else if (Constants.player.getX() >= 730 && Constants.player.getY() >= 280
+                    && Constants.player.getX() <= 800
+                    && Constants.player.getY() <= 460) {
                 if (!eastWall && !atDoor) {
                     int result = JOptionPane.showConfirmDialog(this, eastText, "eastOption",
                             JOptionPane.YES_NO_OPTION,
@@ -140,19 +143,19 @@ public class Room extends JPanel implements ActionListener {
                 return;
 
                 // MOVE SOUTH
-            } else if (Constants.player.getX() > 360 && Constants.player.getY() > 880
-                    && Constants.player.getX() < 560
-                    && Constants.player.getY() < 1080) {
+            } else if (Constants.player.getX() >= 340 && Constants.player.getY() >= 690
+                    && Constants.player.getX() <= 700
+                    && Constants.player.getY() <= 810) {
                 if (!southWall && !atDoor) {
                     int result = JOptionPane.showConfirmDialog(this, southText, "southOption",
                             JOptionPane.YES_NO_OPTION,
                             JOptionPane.QUESTION_MESSAGE);
-                    Constants.player.reset();
 
                     if (result == JOptionPane.YES_OPTION) {
                         // System.out.println("wasd");
                         Constants.currentRoomId += 4;
                         Constants.currentDisplayRow -= 1;
+                        Constants.player.reset();
 
                     } else if (result == JOptionPane.NO_OPTION) {
                         // Constants.timer.restart();
@@ -165,9 +168,9 @@ public class Room extends JPanel implements ActionListener {
             }
 
             // MOVE WEST
-            else if (Constants.player.getX() > 0 && Constants.player.getY() > 520
-                    && Constants.player.getX() < 100
-                    && Constants.player.getY() < 680) {
+            else if (Constants.player.getX() > 0 && Constants.player.getY() >= 280
+                    && Constants.player.getX() <= 120
+                    && Constants.player.getY() <= 460) {
                 if (!westWall && !atDoor) {
                     int result = JOptionPane.showConfirmDialog(this, westText, "westOption",
                             JOptionPane.YES_NO_OPTION,
@@ -258,7 +261,7 @@ public class Room extends JPanel implements ActionListener {
 
         if (southWall) {
             try {
-                g2d.drawImage(ImageIO.read(new File("resources\\southWall.png")), 0, 880, null);
+                g2d.drawImage(ImageIO.read(new File("resources\\southWall.png")), 0, 950, null);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -266,18 +269,18 @@ public class Room extends JPanel implements ActionListener {
         } else {
 
             try {
-                g2d.drawImage(ImageIO.read(new File("resources\\southDoor.png")), 398, 870, null);
+                g2d.drawImage(ImageIO.read(new File("resources\\southDoor.png")), 398, 940, null);
             } catch (IOException e) {
                 e.printStackTrace();
             }
             try {
-                g2d.drawImage(cropImage(ImageIO.read(new File("resources\\southWall.png")), 0, 0, 415, 60), 0, 880,
+                g2d.drawImage(cropImage(ImageIO.read(new File("resources\\southWall.png")), 0, 0, 415, 60), 0, 950,
                         null);
             } catch (IOException e) {
                 e.printStackTrace();
             }
             try {
-                g2d.drawImage(cropImage(ImageIO.read(new File("resources\\southWall.png")), 0, 0, 400, 60), 596, 880,
+                g2d.drawImage(cropImage(ImageIO.read(new File("resources\\southWall.png")), 0, 0, 400, 60), 596, 950,
                         null);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -294,18 +297,18 @@ public class Room extends JPanel implements ActionListener {
 
         } else {
             try {
-                g2d.drawImage(ImageIO.read(new File("resources\\eastDoor.png")), 940, 398, null);
+                g2d.drawImage(ImageIO.read(new File("resources\\eastDoor.png")), 950, 398, null);
             } catch (IOException e) {
                 e.printStackTrace();
             }
             try {
-                g2d.drawImage(cropImage(ImageIO.read(new File("resources\\eastWall.png")), 0, 0, 60, 402), 940, 0,
+                g2d.drawImage(cropImage(ImageIO.read(new File("resources\\eastWall.png")), 0, 0, 60, 412), 940, 0,
                         null);
             } catch (IOException e) {
                 e.printStackTrace();
             }
             try {
-                g2d.drawImage(cropImage(ImageIO.read(new File("resources\\eastWall.png")), 0, 0, 60, 400), 940, 596,
+                g2d.drawImage(cropImage(ImageIO.read(new File("resources\\eastWall.png")), 0, 0, 60, 410), 940, 596,
                         null);
             } catch (IOException e) {
                 e.printStackTrace();
