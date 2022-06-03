@@ -76,30 +76,31 @@ public class Main {
                 "You promise to save the people. The murderer shall pay! Do you wish to fulfill this duty?",
                 "This is the bathroom. Continue?",
                 null, null,
-                "In order to rid the city of the curse, you must expel the murderer of\n King Laius from Thebes.", 12);
+                "In order to rid the city of the curse, you must expel <br> the murderer of King Laius from Thebes.",
+                12);
         Room room1 = new Room(false, false, false, true,
                 "No matter how much better you feel, ignorance will only keep you from the desired truth",
                 "Behind this door will be your faith or truth, continue?",
                 "This will lead you to your previous room. Go through?", null,
-                "Teiresias prophesizes that you are the killer. What do you wish to do?", 8);
+                "Teiresias prophesizes that you are the killer. <br> What do you wish to do?", 8);
         Room room2 = new Room(false, false, false, false,
                 "Why must you stay so blind? Though behind this door may be some treasure. Continue?",
                 "You must be concious and aware. Do you wish to continue?",
                 "This is the bathroom. Continue?", "This will lead you to your previous room. Go through?",
-                "You recall the day when you killed several men on a wagon, where three roads met. THe drunken man from the banquet told you that you were adopted.",
+                "You recall the day when you killed several men on a wagon, where three roads met.<br>The drunken man from the banquet told you that you were adopted.",
                 9);
         Room room3 = new Room(false, false, false, false,
                 "Do you decide to talk to the stranger? You are very close to the truth, continue if you wish. Good luck.",
                 "Are you too scared to confront the truth? Enter if so.",
                 "This is the dining room. Continue?", "This will lead you to your previous room. Go through?",
-                "Someone suggests that you meet with the lone survivor of the event, one of the servants of Laius, who was there when Laius was murdered.",
+                "Someone suggests that you meet with the lone survivor of the event, <br>one of the servants of Laius, who was there when Laius was murdered.",
                 10);
         Room room4 = new Room(false, false, false, false,
                 "Do you wish to say that he is a liar and have him executed?",
                 "Do you accept the truth and stab your eyes out?",
                 "This will lead you to your previous room. Go through?",
                 "Though behind this door may be some goodies. Continue?",
-                "The servant reveals the story of the prophecy, and how you, King Laius, and Jocasta were  related through blood.",
+                "The servant reveals the story of the prophecy, and how you, <br>King Laius, and Jocasta were  related through blood.",
                 6);
 
         Room room5 = new Room(false, true, false, false,
@@ -107,7 +108,7 @@ public class Main {
                 null,
                 "If you go through this room, you will self harm to the extent of death.",
                 "This will lead you to your previous room. Go through?",
-                "As earlier promised, Creon decides that he will listen to the god as to what should happen to you.",
+                "As earlier promised, Creon decides that he will <br>listen to the god as to what should happen to you.",
                 7);
         Room room6 = new Room(false, true, false, false,
                 "You will be exiled from the city to rid of all of your sins and the suffering that you have brought among your people. Continue?",
@@ -116,14 +117,71 @@ public class Main {
                 "This is the bedroom where Jocasta hung herself. Continue?",
                 "You end up getting exiled out of Thebes, and your life is ruined.",
                 3);
-        Room room7 = new Room(false, true, false, false,
-                "You will be exiled from the city to rid of all of your sins and the suffering that you have brought among your people. Continue?",
-                null,
-                null,
-                "This is the bedroom where Jocasta hung herself. Continue?",
-                "You end up getting exiled out of Thebes, and your life is ruined. What a Bozo!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
-                3);
 
+        // trash rooms
+        Room room7 = new Room(false, false, false, true,
+                "You will enter a trash room. Continue?",
+                "You will enter a trash room. Continue?",
+                "You will enter a trash room. Continue",
+                null,
+                "This is a trash room",
+                4);
+        Room room8 = new Room(true, true, false, false,
+                null,
+                null,
+                "You will enter a trash room. Continue",
+                "You will enter a trash room. Continue?",
+                "This is a trash room",
+                0);
+        Room room9 = new Room(true, false, false, false,
+                null,
+                "You will enter a trash room. Continue",
+                "You will enter a trash room. Continue",
+                "You will enter a trash room. Continue",
+                "This is a trash room",
+                1);
+        Room room10 = new Room(false, false, false, false,
+                "You will enter a trash room. Continue",
+                "You have wandered back toward the truth. Do you decide to talk to the stranger? Continue if you wish. Good luck.",
+                "Behind this door will be your faith or truth, continue?",
+                "You will enter a trash room. Continue",
+                "This is a trash room",
+                5);
+        Room room11 = new Room(false, false, true, false,
+                "Behind this door will be your faith or truth, continue?",
+                "You will enter a trash room. Continue",
+                null,
+                "This is the starting room, continue",
+                "This is a trash room",
+                13);
+        Room room12 = new Room(true, false, false, false,
+                null,
+                "You will be exiled from the city to rid of all of your sins and the suffering that you have brought among your people. Continue?",
+                "You have wandered back toward the truth. Do you decide to talk to the stranger? Continue if you wish. Good luck.",
+                "This is the bedroom where Jocasta hung herself. Continue?",
+                "This is a trash room",
+                2);
+        Room room13 = new Room(false, false, true, false,
+                "You must be concious and aware, as you have come back near the truth. Do you wish to continue?",
+                "You will enter a trash room. Continue",
+                null,
+                "You will enter a trash room. Continue",
+                "This is a trash room",
+                14);
+        Room room14 = new Room(false, true, false, false,
+                "You have come very near the truth. Do you accept it and stab your eyes out?",
+                "You must be concious and aware, as you have wandered near the truth. Do you wish to continue?",
+                "You will enter a trash room. Continue",
+                null,
+                "This is a trash room",
+                11);
+        Room room15 = new Room(false, true, true, false,
+                "You will enter a trash room. Continue",
+                null,
+                null,
+                "You will enter a trash room. Continue",
+                "This is a trash room",
+                15);
         Constants.rooms[3][0] = room;
         Constants.rooms[2][0] = room1;
         Constants.rooms[2][1] = room2;
@@ -131,6 +189,15 @@ public class Main {
         Constants.rooms[1][2] = room4;
         Constants.rooms[1][3] = room5;
         Constants.rooms[0][3] = room6;
+        Constants.rooms[1][0] = room7;
+        Constants.rooms[0][0] = room8;
+        Constants.rooms[0][1] = room9;
+        Constants.rooms[1][1] = room10;
+        Constants.rooms[3][1] = room11;
+        Constants.rooms[0][2] = room12;
+        Constants.rooms[3][2] = room13;
+        Constants.rooms[2][3] = room14;
+        Constants.rooms[3][3] = room15;
 
         // setting the locaiton and adding it onto the frame
         Constants.frame.add(room);

@@ -15,7 +15,7 @@ public class Player extends JPanel {
     public void draw(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         try {
-            g2d.drawImage(ImageIO.read(new File("resources\\player.png")), x, y, 50, 50, null);
+            g2d.drawImage(ImageIO.read(new File("resources\\player.png")), x, y, 80, 100, null);
         } catch (IOException e) {
             System.out.println(e);
         }

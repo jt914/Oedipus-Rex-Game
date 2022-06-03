@@ -57,8 +57,7 @@ public class Room extends JPanel implements ActionListener {
         roomId = new JLabel(Constants.currentDisplayRow + ", " + Constants.currentDisplayColumn, SwingConstants.LEFT);
         roomId.setHorizontalAlignment(SwingConstants.LEFT);
         topWords = new JLabel(topDesc, SwingConstants.RIGHT);
-        topWords.setText("<html><p>" + "         " + topDesc.substring(0, 54) + "<br>" + "         "
-                + topDesc.substring(54) + "</p></html>");
+        topWords.setText(topDesc);
         NORTH.add(roomId);
         NORTH.add(topWords);
         NORTH.setPreferredSize(new Dimension(500, 60));
@@ -73,6 +72,7 @@ public class Room extends JPanel implements ActionListener {
         // System.out.println(id);
         // System.out.println(Constants.currentRoomId);
         Constants.oldId = this.id;
+        // System.out.println(Constants.player.getX() + ", " + Constants.player.getY());
 
         if (Constants.currentRoomId == id) {
             // System.out.println(Constants.player.getX() + ", " + Constants.player.getY());
@@ -86,7 +86,7 @@ public class Room extends JPanel implements ActionListener {
             // MOVE NORTH
             if (Constants.player.getX() > 160 && Constants.player.getY() > 60
                     && Constants.player.getX() < 260
-                    && Constants.player.getY() < 130) {
+                    && Constants.player.getY() < 90) {
                 // System.out.println("working");
 
                 if (!northWall && !atDoor) {
@@ -94,6 +94,14 @@ public class Room extends JPanel implements ActionListener {
                             JOptionPane.YES_NO_OPTION,
                             JOptionPane.QUESTION_MESSAGE);
                     if (result == JOptionPane.YES_OPTION) {
+                        if (Constants.currentRoomId == 3) {
+                            int finished = JOptionPane.showConfirmDialog(this,
+                                    "You have finished the storyline and your journey.", "finished",
+                                    JOptionPane.OK_CANCEL_OPTION);
+                            if (finished == JOptionPane.OK_OPTION) {
+                                System.exit(1);
+                            }
+                        }
                         // System.out.println("wasd");
                         Constants.currentRoomId -= 4;
                         Constants.currentDisplayRow += 1;
@@ -108,16 +116,16 @@ public class Room extends JPanel implements ActionListener {
                 return;
 
                 // MOVE EAST
-            } else if (Constants.player.getX() > 380 && Constants.player.getY() > 240
+            } else if (Constants.player.getX() > 340 && Constants.player.getY() > 220
                     && Constants.player.getX() < 480
-                    && Constants.player.getY() < 330) {
+                    && Constants.player.getY() < 300) {
                 if (!eastWall && !atDoor) {
                     int result = JOptionPane.showConfirmDialog(this, eastText, "eastOption",
                             JOptionPane.YES_NO_OPTION,
                             JOptionPane.QUESTION_MESSAGE);
                     if (result == JOptionPane.YES_OPTION) {
                         Constants.currentRoomId += 1;
-                        Constants.currentDisplayColumn -= 1;
+                        Constants.currentDisplayColumn += 1;
                         Constants.player.reset();
 
                     } else if (result == JOptionPane.NO_OPTION) {
@@ -164,7 +172,7 @@ public class Room extends JPanel implements ActionListener {
                             JOptionPane.QUESTION_MESSAGE);
                     if (result == JOptionPane.YES_OPTION) {
                         Constants.currentRoomId -= 1;
-                        Constants.currentDisplayRow += 1;
+                        Constants.currentDisplayRow -= 1;
                         Constants.player.reset();
 
                     } else if (result == JOptionPane.NO_OPTION) {
@@ -207,8 +215,7 @@ public class Room extends JPanel implements ActionListener {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         roomId.setText(Constants.currentDisplayRow + ", " + Constants.currentDisplayColumn);
-        topWords.setText("<html><p>" + "                   " + topDesc.substring(0, 54) + "<br>" + "                   "
-                + topDesc.substring(54) + "</p></html>");
+        topWords.setText("<html><p>" + topDesc + "</html></p>");
         NORTH.repaint();
 
         try {
