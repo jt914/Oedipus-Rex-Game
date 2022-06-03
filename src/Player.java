@@ -31,8 +31,8 @@ public class Player extends JPanel {
 
     public void moveNorth() {
         y -= 60;
-        if (y <= 140) {
-            y = 140;
+        if (y <= 50) {
+            y = 50;
         }
         repaint();
     }
@@ -40,8 +40,8 @@ public class Player extends JPanel {
     public void moveEast() {
         x += 60;
 
-        if (x >= Constants.SW - 180) {
-            x = Constants.SW - 180;
+        if (x >= Constants.SW - 210) {
+            x = Constants.SW - 210;
         }
 
         repaint();
@@ -51,8 +51,8 @@ public class Player extends JPanel {
     public void moveSouth() {
         y += 60;
 
-        if (y >= Constants.SH - 220) {
-            y = Constants.SH - 220;
+        if (y >= Constants.SH - 270) {
+            y = Constants.SH - 270;
         }
 
         repaint();
