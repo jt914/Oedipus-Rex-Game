@@ -1,4 +1,5 @@
 package src;
+
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -10,13 +11,13 @@ import java.io.File;
 import java.io.IOException;
 
 public class Player extends JPanel {
-    private int x = 200;
-    private int y = 200;
+    private int x = 400;
+    private int y = 400;
 
     public void draw(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         try {
-            g2d.drawImage(ImageIO.read(new File("resources\\player.png")), x, y, 80, 100, null);
+            g2d.drawImage(ImageIO.read(new File("resources\\player.png")), x, y, 160, 200, null);
         } catch (IOException e) {
             System.out.println(e);
         }
@@ -24,23 +25,23 @@ public class Player extends JPanel {
     }
 
     public void reset() {
-        x = 200;
-        y = 200;
+        x = 400;
+        y = 400;
     }
 
     public void moveNorth() {
-        y -= 30;
-        if (y <= 70) {
-            y = 70;
+        y -= 60;
+        if (y <= 140) {
+            y = 140;
         }
         repaint();
     }
 
     public void moveEast() {
-        x += 30;
+        x += 60;
 
-        if (x >= Constants.SW - 90) {
-            x = Constants.SW - 90;
+        if (x >= Constants.SW - 180) {
+            x = Constants.SW - 180;
         }
 
         repaint();
@@ -48,10 +49,10 @@ public class Player extends JPanel {
     }
 
     public void moveSouth() {
-        y += 30;
+        y += 60;
 
-        if (y >= Constants.SH - 110) {
-            y = Constants.SH - 110;
+        if (y >= Constants.SH - 220) {
+            y = Constants.SH - 220;
         }
 
         repaint();
@@ -60,9 +61,9 @@ public class Player extends JPanel {
 
     public void moveWest() {
 
-        x -= 30;
-        if (x <= 30) {
-            x = 30;
+        x -= 60;
+        if (x <= 60) {
+            x = 60;
         }
 
         repaint();

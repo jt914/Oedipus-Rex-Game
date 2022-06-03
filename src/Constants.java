@@ -1,4 +1,5 @@
 package src;
+
 import java.awt.*;
 
 import javax.swing.JFrame;
@@ -6,8 +7,8 @@ import javax.swing.Timer;
 
 public class Constants {
     public static Labyrinth labyrinth;
-    public final static int SW = 500;
-    public final static int SH = 560;
+    public final static int SW = 1000;
+    public final static int SH = 1020;
     public final static Player player = new Player();
     public static int currentRoomId = 12;
     public static int oldId = 12;

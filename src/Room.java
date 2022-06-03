@@ -1,4 +1,5 @@
 package src;
+
 import javax.imageio.ImageIO;
 
 import java.awt.*;
@@ -61,8 +62,8 @@ public class Room extends JPanel implements ActionListener {
         topWords.setText(topDesc);
         NORTH.add(roomId);
         NORTH.add(topWords);
-        NORTH.setPreferredSize(new Dimension(500, 60));
-        this.add(NORTH, "North");
+        NORTH.setPreferredSize(new Dimension(120, 1000));
+        this.add(NORTH, "East");
 
     }
 
@@ -85,9 +86,9 @@ public class Room extends JPanel implements ActionListener {
             // System.out.println(Constants.player.getX() + ", " + Constants.player.getY());
 
             // MOVE NORTH
-            if (Constants.player.getX() > 160 && Constants.player.getY() > 60
-                    && Constants.player.getX() < 260
-                    && Constants.player.getY() < 90) {
+            if (Constants.player.getX() > 320 && Constants.player.getY() > 120
+                    && Constants.player.getX() < 520
+                    && Constants.player.getY() < 180) {
                 // System.out.println("working");
 
                 if (!northWall && !atDoor) {
@@ -117,9 +118,9 @@ public class Room extends JPanel implements ActionListener {
                 return;
 
                 // MOVE EAST
-            } else if (Constants.player.getX() > 340 && Constants.player.getY() > 220
-                    && Constants.player.getX() < 480
-                    && Constants.player.getY() < 300) {
+            } else if (Constants.player.getX() > 680 && Constants.player.getY() > 440
+                    && Constants.player.getX() < 960
+                    && Constants.player.getY() < 600) {
                 if (!eastWall && !atDoor) {
                     int result = JOptionPane.showConfirmDialog(this, eastText, "eastOption",
                             JOptionPane.YES_NO_OPTION,
@@ -139,9 +140,9 @@ public class Room extends JPanel implements ActionListener {
                 return;
 
                 // MOVE SOUTH
-            } else if (Constants.player.getX() > 180 && Constants.player.getY() > 440
-                    && Constants.player.getX() < 280
-                    && Constants.player.getY() < 540) {
+            } else if (Constants.player.getX() > 360 && Constants.player.getY() > 880
+                    && Constants.player.getX() < 560
+                    && Constants.player.getY() < 1080) {
                 if (!southWall && !atDoor) {
                     int result = JOptionPane.showConfirmDialog(this, southText, "southOption",
                             JOptionPane.YES_NO_OPTION,
@@ -164,9 +165,9 @@ public class Room extends JPanel implements ActionListener {
             }
 
             // MOVE WEST
-            else if (Constants.player.getX() > 0 && Constants.player.getY() > 260
-                    && Constants.player.getX() < 50
-                    && Constants.player.getY() < 340) {
+            else if (Constants.player.getX() > 0 && Constants.player.getY() > 520
+                    && Constants.player.getX() < 100
+                    && Constants.player.getY() < 680) {
                 if (!westWall && !atDoor) {
                     int result = JOptionPane.showConfirmDialog(this, westText, "westOption",
                             JOptionPane.YES_NO_OPTION,
@@ -229,27 +230,26 @@ public class Room extends JPanel implements ActionListener {
 
         if (northWall) {
             try {
-                g2d.drawImage(ImageIO.read(new File("resources\\northWall.png")), 0, 60, null);
+                g2d.drawImage(ImageIO.read(new File("resources\\northWall.png")), 0, 0, null);
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
         } else {
             try {
-                g2d.drawImage(cropImage(ImageIO.read(new File("resources\\northWall.png")), 0, 0, 201, 30), 0, 60,
+                g2d.drawImage(ImageIO.read(new File("resources\\northDoor.png")), 404, 30, null);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                g2d.drawImage(cropImage(ImageIO.read(new File("resources\\northWall.png")), 0, 0, 415, 60), 0, 0,
                         null);
             } catch (IOException e) {
                 e.printStackTrace();
             }
             try {
-                g2d.drawImage(cropImage(ImageIO.read(new File("resources\\northWall.png")), 0, 0, 200, 30), 298, 60,
+                g2d.drawImage(cropImage(ImageIO.read(new File("resources\\northWall.png")), 0, 0, 400, 60), 601, 0,
                         null);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            try {
-                g2d.drawImage(ImageIO.read(new File("resources\\northDoor.png")), 199, 60, null);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -258,27 +258,27 @@ public class Room extends JPanel implements ActionListener {
 
         if (southWall) {
             try {
-                g2d.drawImage(ImageIO.read(new File("resources\\southWall.png")), 0, 500, null);
+                g2d.drawImage(ImageIO.read(new File("resources\\southWall.png")), 0, 880, null);
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
         } else {
-            try {
-                g2d.drawImage(cropImage(ImageIO.read(new File("resources\\southWall.png")), 0, 0, 201, 30), 0, 500,
-                        null);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
-                g2d.drawImage(cropImage(ImageIO.read(new File("resources\\southWall.png")), 0, 0, 200, 30), 298, 500,
-                        null);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
 
             try {
-                g2d.drawImage(ImageIO.read(new File("resources\\southDoor.png")), 199, 500, null);
+                g2d.drawImage(ImageIO.read(new File("resources\\southDoor.png")), 398, 870, null);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                g2d.drawImage(cropImage(ImageIO.read(new File("resources\\southWall.png")), 0, 0, 415, 60), 0, 880,
+                        null);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                g2d.drawImage(cropImage(ImageIO.read(new File("resources\\southWall.png")), 0, 0, 400, 60), 596, 880,
+                        null);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -287,27 +287,26 @@ public class Room extends JPanel implements ActionListener {
 
         if (eastWall) {
             try {
-                g2d.drawImage(ImageIO.read(new File("resources\\eastWall.png")), 460, 60, null);
+                g2d.drawImage(ImageIO.read(new File("resources\\eastWall.png")), 960, 0, null);
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
         } else {
             try {
-                g2d.drawImage(cropImage(ImageIO.read(new File("resources\\eastWall.png")), 0, 0, 30, 201), 460, 60,
+                g2d.drawImage(ImageIO.read(new File("resources\\eastDoor.png")), 940, 398, null);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                g2d.drawImage(cropImage(ImageIO.read(new File("resources\\eastWall.png")), 0, 0, 60, 402), 940, 0,
                         null);
             } catch (IOException e) {
                 e.printStackTrace();
             }
             try {
-                g2d.drawImage(cropImage(ImageIO.read(new File("resources\\eastWall.png")), 0, 0, 30, 200), 460, 358,
+                g2d.drawImage(cropImage(ImageIO.read(new File("resources\\eastWall.png")), 0, 0, 60, 400), 940, 596,
                         null);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            try {
-                g2d.drawImage(ImageIO.read(new File("resources\\eastDoor.png")), 460, 259, null);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -316,26 +315,26 @@ public class Room extends JPanel implements ActionListener {
 
         if (westWall) {
             try {
-                g2d.drawImage(ImageIO.read(new File("resources\\westWall.png")), 0, 60, null);
+                g2d.drawImage(ImageIO.read(new File("resources\\westWall.png")), 0, 0, null);
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
         } else {
             try {
-                g2d.drawImage(cropImage(ImageIO.read(new File("resources\\westWall.png")), 0, 0, 30, 201), 0, 60, null);
+                g2d.drawImage(ImageIO.read(new File("resources\\westDoor.png")), 30, 398, null);
             } catch (IOException e) {
                 e.printStackTrace();
             }
             try {
-                g2d.drawImage(cropImage(ImageIO.read(new File("resources\\westWall.png")), 0, 0, 30, 200), 0, 358,
+                g2d.drawImage(cropImage(ImageIO.read(new File("resources\\westWall.png")), 0, 0, 60, 402), 0, 0,
                         null);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
             try {
-                g2d.drawImage(ImageIO.read(new File("resources\\westDoor.png")), 0, 259, null);
+                g2d.drawImage(cropImage(ImageIO.read(new File("resources\\westWall.png")), 0, 0, 60, 400), 0, 596,
+                        null);
             } catch (IOException e) {
                 e.printStackTrace();
             }
