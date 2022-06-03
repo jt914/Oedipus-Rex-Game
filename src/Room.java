@@ -35,8 +35,7 @@ import javax.swing.*;
 public class Room extends JPanel implements ActionListener {
     private int id;
     private boolean northWall, eastWall, southWall, westWall;
-    private Timer timer;
-    private JLabel roomId, topWords;
+    private JLabel topWords;
     private boolean atDoor;
     String northText, eastText, southText, westText, topDesc;
     private JPanel NORTH;
@@ -58,14 +57,31 @@ public class Room extends JPanel implements ActionListener {
         // timer = new Timer(1, this);
 
         NORTH = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        roomId = new JLabel(Constants.currentDisplayRow + ", " + Constants.currentDisplayColumn, SwingConstants.LEFT);
-        roomId.setHorizontalAlignment(SwingConstants.LEFT);
+        // roomId = new JLabel(Constants.currentDisplayRow + ", " +
+        // Constants.currentDisplayColumn, SwingConstants.LEFT);
+        // roomId.setHorizontalAlignment(SwingConstants.LEFT);
+
         topWords = new JLabel(topDesc, SwingConstants.RIGHT);
-        topWords.setText(topDesc);
-        NORTH.add(roomId);
+        topWords.setText("<html><h2>" + topDesc
+                + "</h2><br><br><br><br><h2>Current Position in Dungeon<h1>" + Constants.currentDisplayRow + ", "
+                + Constants.currentDisplayColumn
+                + "</h1></html>");
+
+        // topWords.setText(topDesc);
+        // NORTH.add(roomId);
         NORTH.add(topWords);
-        NORTH.setPreferredSize(new Dimension(120, 1000));
+        Font font = new Font("Verdana", Font.BOLD, 20);
+        NORTH.setFont(font);
+        NORTH.setPreferredSize(new Dimension(500, 1000));
         this.add(NORTH, "East");
+        // BufferedImage image = null;
+        // try {
+        // image = ImageIO.read(new File("resources\\grid.png"));
+        // } catch (IOException e) {
+        // e.printStackTrace();
+        // }
+        // JLabel picLabel = new JLabel(new ImageIcon(image));
+        // NORTH.add(picLabel, JFrame.BOTTOM_ALIGNMENT);
 
     }
 
@@ -94,18 +110,19 @@ public class Room extends JPanel implements ActionListener {
                 // System.out.println("working");
 
                 if (!northWall && !atDoor) {
+                    if (Constants.currentRoomId == 3) {
+                        int finished = JOptionPane.showConfirmDialog(this,
+                                "You have finished the storyline and your journey.", "finished",
+                                JOptionPane.OK_CANCEL_OPTION);
+                        if (finished == JOptionPane.OK_OPTION) {
+                            System.exit(1);
+                        }
+                    }
+
                     int result = JOptionPane.showConfirmDialog(this, northText, "northOption",
                             JOptionPane.YES_NO_OPTION,
                             JOptionPane.QUESTION_MESSAGE);
                     if (result == JOptionPane.YES_OPTION) {
-                        if (Constants.currentRoomId == 3) {
-                            int finished = JOptionPane.showConfirmDialog(this,
-                                    "You have finished the storyline and your journey.", "finished",
-                                    JOptionPane.OK_CANCEL_OPTION);
-                            if (finished == JOptionPane.OK_OPTION) {
-                                System.exit(1);
-                            }
-                        }
                         // System.out.println("wasd");
                         Constants.currentRoomId -= 4;
                         Constants.currentDisplayRow += 1;
@@ -177,7 +194,7 @@ public class Room extends JPanel implements ActionListener {
                             JOptionPane.QUESTION_MESSAGE);
                     if (result == JOptionPane.YES_OPTION) {
                         Constants.currentRoomId -= 1;
-                        Constants.currentDisplayRow -= 1;
+                        Constants.currentDisplayColumn -= 1;
                         Constants.player.reset();
 
                     } else if (result == JOptionPane.NO_OPTION) {
@@ -219,10 +236,12 @@ public class Room extends JPanel implements ActionListener {
 
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        roomId.setText(Constants.currentDisplayRow + ", " + Constants.currentDisplayColumn);
-        topWords.setText("<html><p>" + topDesc + "</html></p>");
-        NORTH.repaint();
-
+        // roomId.setText(Constants.currentDisplayRow + ", " +
+        // Constants.currentDisplayColumn);
+        topWords.setText("<html><h2>" + topDesc
+                + "</h2><br><br><br><br><h2>Current Position in Dungeon<h1>" + Constants.currentDisplayRow + ", "
+                + Constants.currentDisplayColumn
+                + "</h1></html>");
         try {
 
             g2d.drawImage(ImageIO.read(new File("resources\\grassBG.png")), 0, 0,

@@ -94,36 +94,36 @@ public class Main {
                                 "You must be concious and aware. Do you wish to continue?",
                                 "This is the bathroom. Continue?",
                                 "This will lead you to your previous room. Go through?",
-                                "You recall the day when you killed several men on a wagon, where three roads met.<br>The drunken man from the banquet told you that you were adopted.",
+                                "You recall the day when you killed several men <br>on a wagon, where three roads met. The <br>drunken man from the banquet told you that <br>you were adopted.",
                                 9);
                 Room room3 = new Room(false, false, false, false,
                                 "Do you decide to talk to the stranger? You are very close to the truth, continue if you wish. Good luck.",
                                 "Are you too scared to confront the truth? Enter if so.",
                                 "This is the dining room. Continue?",
                                 "This will lead you to your previous room. Go through?",
-                                "Someone suggests that you meet with the lone survivor of the event, <br>one of the servants of Laius, who was there when Laius was murdered.",
+                                "Someone suggests that you meet with the lone survivor <br>of the event, one of the servants of Laius, who <br> was there when Laius was murdered.",
                                 10);
                 Room room4 = new Room(false, false, false, false,
                                 "Do you wish to say that he is a liar and have him executed?",
                                 "Do you accept the truth and stab your eyes out?",
                                 "This will lead you to your previous room. Go through?",
                                 "Though behind this door may be some goodies. Continue?",
-                                "The servant reveals the story of the prophecy, and how you, <br>King Laius, and Jocasta were  related through blood.",
+                                "The servant reveals the story of the prophecy, <br>and how you, King Laius, and Jocasta were <br>related through blood.",
                                 6);
 
                 Room room5 = new Room(false, true, false, false,
-                                "You will be exiled from the city to rid of all of your sins and the suffering that you have brought among your people. Continue?",
+                                "You will be exiled from the city to rid of all of <br>your sins and the suffering that you have brought <br<among your people. Continue?",
                                 null,
                                 "If you go through this room, you will self harm to the extent of death.",
                                 "This will lead you to your previous room. Go through?",
                                 "As earlier promised, Creon decides that he will <br>listen to the god as to what should happen to you.",
                                 7);
                 Room room6 = new Room(false, true, false, false,
-                                "You will be exiled from the city to rid of all of your sins and the suffering that you have brought among your people. Continue?",
+                                null,
                                 null,
                                 null,
                                 "This is the bedroom where Jocasta hung herself. Continue?",
-                                "You end up getting exiled out of Thebes, and your life is ruined.",
+                                "You end up getting exiled out of Thebes, and your life is <br>ruined. Continue North.",
                                 3);
 
                 // trash rooms
