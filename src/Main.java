@@ -112,7 +112,7 @@ public class Main {
                                 6);
 
                 Room room5 = new Room(false, true, false, false,
-                                "You will be exiled from the city to rid of all of <br>your sins and the suffering that you have brought <br<among your people. Continue?",
+                                "You will be exiled from the city to rid of all of your sins and the suffering that you have brought among your people. Continue?",
                                 null,
                                 "If you go through this room, you will self harm to the extent of death.",
                                 "This will lead you to your previous room. Go through?",
