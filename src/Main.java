@@ -6,6 +6,8 @@ import java.awt.event.KeyListener;
 
 import java.awt.*;
 import javax.swing.JFrame;
+import javax.swing.plaf.TreeUI;
+
 import java.io.File;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -79,60 +81,61 @@ public class Main {
                 // main window is basically a panel, or part of the frame
 
                 Room room = new Room(false, false, true, true,
-                                "You promise to save the people. The murderer shall pay! Do you wish to fulfill this duty?",
-                                "This is the bathroom. Continue?",
+                                "Do you wish to pledge to save your people and find the truth? Continue if so.",
+                                "Do you want to delay the inevitable and remain inside your castle, desperately hoping for a solution to all your problems?",
                                 null, null,
-                                "In order to rid the city of the curse, you must expel <br> the murderer of King Laius from Thebes.",
+                                "You are the King of Thebes. There is a plague <br> afflicting your city and an unsolved murder. <br>What do you wish to do? Choose your path wisely, as <br>each step may bring your further or closer to the truth.",
                                 12);
                 Room room1 = new Room(false, false, false, true,
-                                "No matter how much better you feel, ignorance will only keep you from the desired truth",
-                                "Behind this door will be your faith or truth, continue?",
-                                "This will lead you to your previous room. Go through?", null,
-                                "Teiresias prophesizes that you are the killer. <br> What do you wish to do?", 8);
-                Room room2 = new Room(false, false, false, false,
-                                "Why must you stay so blind? Though behind this door may be some treasure. Continue?",
-                                "You must be concious and aware. Do you wish to continue?",
-                                "This is the bathroom. Continue?",
+                                "No matter how much better you feel, ignorance will only keep you from understanding your destiny. Continue if you want to venture into a life of falsehood.",
+                                "Even though you are infuriated with the Tiresias and Creon for the accusation, do you wish to continue with the quest for the good of the people?",
+                                "Do you wish the return to the starting room?", null,
+                                "In your quest for truth, you visit Teiresias, a blind<br>prophet. Teiresias tells you that you are the killer. <br> What do you wish to do?",
+                                8);
+                Room room2 = new Room(true, false, true, false,
+                                null,
+                                "Do you wish to continue on? You are very near the truth, yet nothing is understood yet.",
+                                null,
                                 "This will lead you to your previous room. Go through?",
-                                "You recall the day when you killed several men <br>on a wagon, where three roads met. The <br>drunken man from the banquet told you that <br>you were adopted.",
+                                "You confront Jocasta with the information you have <br>gathered. You recall the day when you killed <br>several men at a crossroads, and when a drunken<br> man told you that you were adopted. Jocasta <br>explains the prophecy of her son murdering <br>the old king.",
                                 9);
                 Room room3 = new Room(false, false, false, false,
-                                "Do you decide to talk to the stranger? You are very close to the truth, continue if you wish. Good luck.",
-                                "Are you too scared to confront the truth? Enter if so.",
-                                "This is the dining room. Continue?",
+                                "Jocasta has fled, screaming, leaving you confused. Do you wish to continue and find? You are tantalizingly close to the truth about your life.",
+                                "You sense something is not right. Do you wish to leave the messenger and do further investigation?",
+                                "Do you wish to run away from your troubles and attempt to flee the city?",
                                 "This will lead you to your previous room. Go through?",
-                                "Someone suggests that you meet with the lone survivor <br>of the event, one of the servants of Laius, who <br> was there when Laius was murdered.",
+                                "A messenger comes to you with news about the old <br> king's death. After further interrogation, you discover<br> from the messenger that you were adopted. <br>Then he tells you that Laius, the old king, and<brJocasta had a child in the past, yet the baby <br>was given to a shepherd to abandon.",
                                 10);
-                Room room4 = new Room(false, false, false, false,
+                Room room4 = new Room(false, false, false, true,
                                 "Do you wish to say that he is a liar and have him executed?",
                                 "Do you accept the truth and stab your eyes out?",
                                 "This will lead you to your previous room. Go through?",
-                                "Though behind this door may be some goodies. Continue?",
-                                "The servant reveals the story of the prophecy, <br>and how you, King Laius, and Jocasta were <br>related through blood.",
+                                null,
+                                "The shepherd reveals to you the remainder of <br>the story. You piece together the horrible truth.",
                                 6);
 
-                Room room5 = new Room(false, true, false, false,
-                                "You will be exiled from the city to rid of all of your sins and the suffering that you have brought among your people. Continue?",
+                Room room5 = new Room(false, true, true, false,
+                                "Do you wish to accept your punishment for the good of the people?",
                                 null,
-                                "If you go through this room, you will self harm to the extent of death.",
+                                null,
                                 "This will lead you to your previous room. Go through?",
-                                "As earlier promised, Creon decides that he will <br>listen to the god as to what should happen to you.",
+                                "As earlier promised, Creon decides that he will <br>listen to the gods as to what should happen<br> to you. You will be exiled from the <br>city to rid of all of your sins and the suffering<br> that you have brought among your people.",
                                 7);
-                Room room6 = new Room(false, true, false, false,
+                Room room6 = new Room(false, true, true, true,
                                 null,
                                 null,
+                                "Do you wish to return to the previous room?",
                                 null,
-                                "This is the bedroom where Jocasta hung herself. Continue?",
-                                "You end up getting exiled out of Thebes, and your life is <br>ruined. Continue North.",
+                                "You are exiled out of Thebes, and your life is <br>ruined. Continue North.",
                                 3);
 
                 // trash rooms
-                Room room7 = new Room(false, false, false, true,
-                                "You will enter a trash room. Continue?",
-                                "You will enter a trash room. Continue?",
-                                "You will enter a trash room. Continue",
+                Room room7 = new Room(true, true, false, true,
                                 null,
-                                "This is a trash room",
+                                null,
+                                "Do you wish to return to your quest for the truth?",
+                                null,
+                                "The gods have become fed up with your inability to<br> listen, and have decided to punish your wife. <br>Jocasta is now infected with the disease that has <br>been spreading around the city.",
                                 4);
                 Room room8 = new Room(true, true, false, false,
                                 null,
@@ -155,19 +158,19 @@ public class Main {
                                 "You will enter a trash room. Continue",
                                 "This is a trash room",
                                 5);
-                Room room11 = new Room(false, false, true, false,
-                                "Behind this door will be your faith or truth, continue?",
-                                "You will enter a trash room. Continue",
+                Room room11 = new Room(true, true, true, false,
                                 null,
-                                "This is the starting room, continue",
-                                "This is a trash room",
+                                null,
+                                null,
+                                "Do you wish to return to the starting room for a chance to fix everything?",
+                                "You have neglected the truth, and the gods have <br>begun punishing you and your people. Many of your<br> citizens are dead, and many more are furious<br> at your seemingly apathetic behaviour.",
                                 13);
-                Room room12 = new Room(true, false, false, false,
+                Room room12 = new Room(true, true, false, true,
                                 null,
-                                "You will be exiled from the city to rid of all of your sins and the suffering that you have brought among your people. Continue?",
-                                "You have wandered back toward the truth. Do you decide to talk to the stranger? Continue if you wish. Good luck.",
-                                "This is the bedroom where Jocasta hung herself. Continue?",
-                                "This is a trash room",
+                                null,
+                                "Do you wish to return to the previous room?",
+                                null,
+                                "Despite your best efforts and yelling, you <br>have lost your authority and respect. It <br>seems the gods have also thrown great <br>disrespect upon your name.",
                                 2);
                 Room room13 = new Room(false, false, true, false,
                                 "You must be concious and aware, as you have come back near the truth. Do you wish to continue?",
@@ -176,12 +179,12 @@ public class Main {
                                 "You will enter a trash room. Continue",
                                 "This is a trash room",
                                 14);
-                Room room14 = new Room(false, true, false, false,
+                Room room14 = new Room(true, true, true, false,
                                 "You have come very near the truth. Do you accept it and stab your eyes out?",
                                 "You must be concious and aware, as you have wandered near the truth. Do you wish to continue?",
                                 "You will enter a trash room. Continue",
-                                null,
-                                "This is a trash room",
+                                "Do you wish to return to to the path of truth?",
+                                "Despite your best efforts to flee, the gods <br>have chosen your destiny, and you <br>are unable to leave.",
                                 11);
                 Room room15 = new Room(false, true, true, false,
                                 "You will enter a trash room. Continue",

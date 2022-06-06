@@ -63,9 +63,10 @@ public class Room extends JPanel implements ActionListener {
 
         topWords = new JLabel(topDesc, SwingConstants.RIGHT);
         topWords.setText("<html><h2>" + topDesc
-                + "</h2><br><br><br><br><h2>Current Position in Dungeon<h1>" + Constants.currentDisplayRow + ", "
-                + Constants.currentDisplayColumn
-                + "</h1></html>");
+        // + "</h2><br><br><br><br><h2>Current Position in Dungeon<h1>" +
+        // Constants.currentDisplayRow + ", "
+        // + Constants.currentDisplayColumn
+                + "</h2></html>");
 
         // topWords.setText(topDesc);
         // NORTH.add(roomId);
@@ -239,9 +240,10 @@ public class Room extends JPanel implements ActionListener {
         // roomId.setText(Constants.currentDisplayRow + ", " +
         // Constants.currentDisplayColumn);
         topWords.setText("<html><h2>" + topDesc
-                + "</h2><br><br><br><br><h2>Current Position in Dungeon<h1>" + Constants.currentDisplayRow + ", "
-                + Constants.currentDisplayColumn
-                + "</h1></html>");
+        // + "</h2><br><br><br><br><h2>Current Position in Dungeon<h1>" +
+        // Constants.currentDisplayRow + ", "
+        // + Constants.currentDisplayColumn
+                + "</h2></html>");
         try {
 
             g2d.drawImage(ImageIO.read(new File("resources\\grassBG.png")), 0, 0,
